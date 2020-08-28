@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 
-// import Search from "./components/Search.jsx";
-// import Accordion from "./components/Accordion";
-// import Dropdown from "./components/Dropdown";
+import Search from "./components/Search.jsx";
+import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
 import Translate from "./components/Translate.jsx";
+import Route from "./components/Route";
+import Header from "./components/Header.jsx"
 
-// const items = [
-//   {
-//     title: "What is React?",
-//     content: "React is a front end javascript framework",
-//   },
-//   {
-//     title: "Why use React?",
-//     content: "React is a favorite JS library among engineers",
-//   },
-//   {
-//     title: "How do you use React?",
-//     content: "You use React by creating components",
-//   },
-// ];
+const items = [
+  {
+    title: "What is React?",
+    content: "React is a front end javascript framework",
+  },
+  {
+    title: "Why use React?",
+    content: "React is a favorite JS library among engineers",
+  },
+  {
+    title: "How do you use React?",
+    content: "You use React by creating components",
+  },
+];
 
 const options = [
   {
@@ -36,24 +38,28 @@ const options = [
 ];
 
 export default () => {
-  // const [selected, setSelected] = useState(options[0]);
-  // const [showDropdown, setShowDropdown] = useState(true);
+  const [selected, setSelected] = useState(options[0]);
 
   return (
     <div>
-      {/* <Accordion items={items} /> */}
-      {/* <Search /> */}
-      {/* <button onClick={() => setShowDropdown(!showDropdown)}>
-        Toggle Dropdown
-      </button>
-      {showDropdown ? (
+      <Header />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
         <Dropdown
+          label="Select a Color"
           selected={selected}
           onSelectedChange={setSelected}
           options={options}
         />
-      ) : null} */}
-      <Translate />
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
 };
